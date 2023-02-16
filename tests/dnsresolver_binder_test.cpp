@@ -193,7 +193,7 @@ TEST_F(DnsResolverBinderTest, RegisterEventListener_onDnsEvent) {
 
 // TODO: Need to test more than one server cases.
 TEST_F(DnsResolverBinderTest, SetResolverConfiguration_Tls) {
-    const std::vector<std::string> LOCALLY_ASSIGNED_DNS{"8.8.8.8", "2001:4860:4860::8888"};
+    const std::vector<std::string> LOCALLY_ASSIGNED_DNS{"1.1.1.1", "2001:4860:4860::8888"};
     static const std::vector<std::string> valid_v4_addr = {"192.0.2.1"};
     static const std::vector<std::string> valid_v6_addr = {"2001:db8::2"};
     static const std::vector<std::string> invalid_v4_addr = {"192.0.*.5"};
