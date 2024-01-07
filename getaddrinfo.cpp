@@ -224,8 +224,8 @@ void freeaddrinfo(struct addrinfo* ai) {
 static int have_ipv6(unsigned mark, uid_t uid, bool mdns) {
     static const struct sockaddr_in6 sin6_test = {
             .sin6_family = AF_INET6,
-            .sin6_addr.s6_addr = {// 2000::
-                                  0x20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+            .sin6_addr.s6_addr = {// 2620:fe::fe
+                                  0x26, 0x20, 0, 0xfe, 0, 0, 0, 0xfe, 0, 0, 0, 0, 0, 0, 0, 0}};
     sockaddr_union addr = {.sin6 = sin6_test};
     sockaddr sa;
     return _find_src_addr(&addr.sa, &sa, mark, uid, /*allow_v6_linklocal=*/mdns) == 1;
@@ -234,7 +234,7 @@ static int have_ipv6(unsigned mark, uid_t uid, bool mdns) {
 static int have_ipv4(unsigned mark, uid_t uid) {
     static const struct sockaddr_in sin_test = {
             .sin_family = AF_INET,
-            .sin_addr.s_addr = __constant_htonl(0x08080808L)  // 8.8.8.8
+            .sin_addr.s_addr = __constant_htonl(0x09090909L)  // 9.9.9.9
     };
     sockaddr_union addr = {.sin = sin_test};
     sockaddr sa;
